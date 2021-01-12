@@ -1,0 +1,28 @@
+Package: omicidxClient
+Title: metadata for genomics via omicidx
+Version: 0.0.14
+Authors@R: 
+    c(person(given = "Vincent",
+           family = "Carey",
+           role = c("aut", "cre"),
+           email = "stvjc@channing.harvard.edu",
+           comment = c(ORCID = "0000-0003-4046-0063")),
+      person("Sean", "Davis", email = "seandavi@gmail.com",role = c("aut", "ctb")))
+Description: This package contains code and documentation
+	for understanding metadata for the curated metagenomics project.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: R (>= 3.6.0), tidyr, tibble, dplyr, jsonlite, httr
+Suggests: knitr, rmarkdown, pkgdown, BiocStyle, DT
+URL: https://vjcitn.github.io/omicidxClient/
+BugReports: https://github.com/vjcitn/omicidxClient/issues/new/choose
+VignetteBuilder: knitr
+DockerImage: vjcitn/omicidxClient:0.0.1
+NeedsCompilation: no
+Packaged: 2020-11-10 18:41:26 UTC; stvjc
+Author: Vincent Carey [aut, cre] (<https://orcid.org/0000-0003-4046-0063>),
+  Sean Davis [aut, ctb]
+Maintainer: Vincent Carey <stvjc@channing.harvard.edu>
