@@ -191,7 +191,7 @@ SRP number from the call above.
 
 ```{r dosa,cache=TRUE}
 suppressPackageStartupMessages({
-library(md4mg)
+library(omicidxClient)
 })
 samp_atts_by_study
 sa_asnicar = samp_atts_by_study()
