@@ -1,6 +1,6 @@
 Package: omicidxClient
 Title: metadata for genomics via omicidx
-Version: 0.0.14
+Version: 0.0.15
 Authors@R: 
     c(person(given = "Vincent",
            family = "Carey",
