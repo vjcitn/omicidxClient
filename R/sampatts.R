@@ -1,4 +1,5 @@
 #' obtain sample attributes for a study.
+#' @import magrittr
 #' @param srp character(1) SRP tag for a study in NCBI SRA
 #' @param size numeric(1) maximum number of records to return
 #' @param cursor character(1) the value of the cursor returned in a previous call; see note.

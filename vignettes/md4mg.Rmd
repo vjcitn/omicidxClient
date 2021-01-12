@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(BiocStyle)
+library(magrittr)
 ```
 
 # Introduction
