@@ -1,6 +1,6 @@
 Package: omicidxClient
 Title: metadata for genomics via omicidx
-Version: 0.0.17
+Version: 0.0.18
 Authors@R: 
     c(person(given = "Vincent",
            family = "Carey",
@@ -10,7 +10,7 @@ Authors@R:
       person("Sean", "Davis", email = "seandavi@gmail.com",role = c("aut", "ctb")))
 Description: This package contains code and documentation
 	for understanding metadata for the curated metagenomics project.
-License: MIT + file LICENSE
+License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
