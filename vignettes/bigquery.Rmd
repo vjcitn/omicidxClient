@@ -13,7 +13,7 @@ output:
     toc: yes
 ---
 
-```{r, include = FALSE}
+```{r init, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -22,13 +22,18 @@ library(BiocStyle)
 library(magrittr)
 library(bigrquery)
 library(dplyr)
+```
+
+# Introduction
+
+This vignette can be used if the following code can succeed.
+```{r setup2, eval=FALSE}
 bq_auth() # may need to do some gcloud configuration
 con = bigrquery::dbConnect(bigquery(), 
     project="isb-cgc-01-0006", 
     dataset="omicidx", billing=Sys.getenv("BQ_BILLING"))
 ```
 
-# Introduction
 
 This vignette reviews basic aspects of interacting with omicidx as
 exposed through Google BigQuery.
