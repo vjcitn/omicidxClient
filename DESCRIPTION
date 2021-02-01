@@ -1,6 +1,6 @@
 Package: omicidxClient
 Title: metadata for genomics via omicidx
-Version: 0.0.17
+Version: 0.0.18
 Authors@R: 
     c(person(given = "Vincent",
            family = "Carey",
@@ -17,7 +17,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: magrittr
 Depends: R (>= 3.6.0), tidyr, tibble, dplyr, jsonlite, httr
-Suggests: knitr, rmarkdown, pkgdown, BiocStyle, DT
+Suggests: knitr, rmarkdown, pkgdown, BiocStyle, DT, bigrquery
 URL: https://vjcitn.github.io/omicidxClient/
 BugReports: https://github.com/vjcitn/omicidxClient/issues/new/choose
 VignetteBuilder: knitr
