@@ -4,7 +4,13 @@
 \alias{samp_atts_by_study}
 \title{obtain sample attributes for a study.}
 \usage{
-samp_atts_by_study(srp = "SRP082656", size = 500, cursor = NULL, ...)
+samp_atts_by_study(
+  srp = "SRP082656",
+  size = 500,
+  cursor = NULL,
+  values_fn = function(x) paste(x, collapse = ":"),
+  ...
+)
 }
 \arguments{
 \item{srp}{character(1) SRP tag for a study in NCBI SRA}
@@ -13,7 +19,9 @@ samp_atts_by_study(srp = "SRP082656", size = 500, cursor = NULL, ...)
 
 \item{cursor}{character(1) the value of the cursor returned in a previous call; see note.}
 
-\item{\dots}{not currently used}
+\item{values_fn}{function used as \code{value_fn} parameter in \code{tidyr::pivot_wider}}
+
+\item{\dots}{Additional arguments passed to \code{tidyr::pivot_wider}}
 }
 \description{
 obtain sample attributes for a study.

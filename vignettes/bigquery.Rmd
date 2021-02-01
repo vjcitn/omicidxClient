@@ -1,0 +1,70 @@
+---
+title: "Using omicidx with BigQuery"
+author: 
+  - Vince Carey^[stvjc@channing.harvard.edu]
+vignette: >
+  %\VignetteIndexEntry{Using omicidx with BigQuery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+output: 
+  BiocStyle::html_document:
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(BiocStyle)
+library(magrittr)
+library(bigrquery)
+library(dplyr)
+bq_auth() # may need to do some gcloud configuration
+con = bigrquery::dbConnect(bigquery(), 
+    project="isb-cgc-01-0006", 
+    dataset="omicidx", billing=Sys.getenv("BQ_BILLING"))
+```
+
+# Introduction
+
+This vignette reviews basic aspects of interacting with omicidx as
+exposed through Google BigQuery.
+
+## Setup
+
+See the basic [omicidx documentation](http://omicidx.cancerdatasci.org/docs/bigquery/setup/)
+to establish an account for BigQuery.  The documentation also indicates how to
+set up a project for billing.  Charges for a query depend on the quantity of data
+scanned.
+
+The following commands establish a connection to the omicidx dataset
+in BigQuery.  This resource is updated approximately monthly.
+
+```{r setup, eval=FALSE}
+library(bigrquery)
+library(dplyr)
+bq_auth() # may need to do some gcloud configuration, supply gargle_oauth_email for identity
+con = bigrquery::dbConnect(bigquery(), 
+    project="isb-cgc-01-0006", 
+    dataset="omicidx", billing=[provide billing code])
+```
+Once authentication has succeeded, the available tables
+may be listed.  If you do not provide a billing code, certain
+operations that don't involve scanning tables can succeed, but
+select and filter operations will fail because they involve
+creating temporary tables.
+
+```{r lktabs, eval=FALSE}
+dbListTables(con)
+con %>% tbl("sra_study") %>% 
+   select(study_type) %>% 
+   group_by(study_type) %>% 
+   summarise(n=n())
+```
+
+
+## Inspecting a table
+

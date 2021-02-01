@@ -3,7 +3,8 @@
 #' @param srp character(1) SRP tag for a study in NCBI SRA
 #' @param size numeric(1) maximum number of records to return
 #' @param cursor character(1) the value of the cursor returned in a previous call; see note.
-#' @param \dots not currently used
+#' @param values_fn function used as `value_fn` parameter in `tidyr::pivot_wider`
+#' @param \dots Additional arguments passed to `tidyr::pivot_wider`
 #' @note If the number of records available in query response exceeds the value of `size`, the
 #' returned tibble will have an attribute 'cursor' which can be retrieved and used in
 #' subsequent calls to this function.
@@ -14,7 +15,8 @@
 #' attr(t1, "cursor")
 #' samp_atts_by_study(size=0)
 #' @export
-samp_atts_by_study = function (srp = "SRP082656", size = 500, cursor=NULL, ...)
+samp_atts_by_study = function (srp = "SRP082656", size = 500, cursor=NULL, 
+  values_fn = function(x) paste(x, collapse=":"), ...)
 {
     base_url = "https://api.omicidx.cancerdatasci.org/sra/studies/%s/runs?size=%s"
     if (!is.null(cursor)) base_url = paste0(base_url, "&cursor=", cursor)
@@ -29,7 +31,7 @@ samp_atts_by_study = function (srp = "SRP082656", size = 500, cursor=NULL, ...)
     sampatts = metadata %>% dplyr::select(accession, sample.attributes) %>%
         tidyr::unnest(sample.attributes) %>% dplyr::filter(tag !=
         "BioSampleModel") %>% tidyr::pivot_wider(names_from = "tag",
-        values_from = "value")
+        values_from = "value", values_fn=values_fn, ...)
     attr(sampatts, "cursor") = md$cursor
     sampatts
 }
